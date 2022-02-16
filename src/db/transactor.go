@@ -1,20 +1,22 @@
 package db
 
-type LevelDB struct {
-	Path       string
-	Connection *interface{}
+import leveldb "github.com/syndtr/goleveldb/leveldb"
+
+type Transactor struct {
+	conn *leveldb.DB
 }
 
-func Connect(worldPath string) LevelDB {
-	return LevelDB{}
+func (transactor *Transactor) Get(key []byte) ([]byte, error) {
+	raw, err := transactor.conn.Get(key, nil)
+	value := make([]byte, len(raw))
+	copy(value, raw)
+	return value, err
 }
 
-func (ldb *LevelDB) Get(key string) ([]byte, error) {
-	// TODO: Implement this
-	return []byte{}, nil
+func (transactor *Transactor) Store(key []byte, data []byte) error {
+	return transactor.conn.Put(key, data, nil)
 }
 
-func (ldb *LevelDB) Store(key string, data []byte) error {
-	// TODO: Implement this
-	return nil
+func (transactor *Transactor) Delete(key []byte) error {
+	return transactor.conn.Delete(key, nil)
 }

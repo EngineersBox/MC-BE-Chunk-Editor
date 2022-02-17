@@ -43,7 +43,7 @@ func NewByte() NBTTagByte {
 type NBTTagShort struct {
 	NBTTag
 	Value      *[2]byte
-	TypedValue *uint8
+	TypedValue *uint16
 }
 
 func NewShort() NBTTagShort {
@@ -127,7 +127,7 @@ func NewDouble() NBTTagDouble {
 
 type NBTTagByteArray struct {
 	NBTTag
-	Value  *[]byte
+	Value  []byte
 	Length *uint32
 }
 
@@ -144,7 +144,7 @@ func NewByteArray() NBTTagByteArray {
 
 type NBTTagString struct {
 	NBTTag
-	Value      *[]byte
+	Value      []byte
 	TypedValue *string
 	Length     *byte
 }
@@ -163,8 +163,8 @@ func NewString() NBTTagString {
 
 type NBTTagList struct {
 	NBTTag
-	Value      *[]byte
-	TypedValue *[]ListPayload
+	Value      []byte
+	TypedValue []ListPayload
 	Length     *uint32
 }
 
@@ -183,14 +183,14 @@ func NewList() NBTTagList {
 type ListPayload struct {
 	Id          *byte
 	PayloadSize *uint32
-	Value       *[]byte
+	Value       []byte
 	TypedValue  *interface{}
 }
 
 type NBTTagCompound struct {
 	NBTTag
-	Value      *[]byte
-	TypedValue *[]NBTTag
+	Value      []byte
+	TypedValue []NBTTag
 	Length     *uint32
 }
 
@@ -209,8 +209,8 @@ func NewCompound() NBTTagCompound {
 type NBTTagIntArray struct {
 	NBTTag
 	Length     *uint32
-	Value      *[]byte
-	TypedValue *[]uint32
+	Value      []byte
+	TypedValue []uint32
 }
 
 func NewIntArray() NBTTagIntArray {
@@ -228,8 +228,8 @@ func NewIntArray() NBTTagIntArray {
 type NBTTagLongArray struct {
 	NBTTag
 	Length     *uint32
-	Value      *[]byte
-	TypedValue *[]uint64
+	Value      []byte
+	TypedValue []uint64
 }
 
 func NewLongArray() NBTTagLongArray {

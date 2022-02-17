@@ -1,6 +1,6 @@
 package db
 
-import leveldb "github.com/syndtr/goleveldb/leveldb"
+import leveldb "github.com/engineersbox/goleveldb/leveldb"
 
 type Transactor struct {
 	conn *leveldb.DB

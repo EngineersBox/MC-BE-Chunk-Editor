@@ -4,7 +4,7 @@ import (
 	"errors"
 	"os"
 
-	leveldb "github.com/syndtr/goleveldb/leveldb"
+	leveldb "github.com/engineersbox/goleveldb/leveldb"
 )
 
 type World struct {

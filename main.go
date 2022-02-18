@@ -8,11 +8,12 @@ import (
 	"strconv"
 
 	db "github.com/EngineersBox/MC-BE-Chunk-Editor/src/db"
+	hexdump "github.com/EngineersBox/hexdump-format"
 )
 
 const (
-	// testPath = `C:\Users\DEG3NERAT3_\AppData\Local\Packages\Microsoft.MinecraftUWP_8wekyb3d8bbwe\LocalState\games\com.mojang\minecraftWorlds\j4ELYtZvAAA=`
-	testPath = "/Users/jackkilrain/Desktop/pob"
+	testPath = `C:\Users\DEG3NERAT3_\AppData\Local\Packages\Microsoft.MinecraftUWP_8wekyb3d8bbwe\LocalState\games\com.mojang\minecraftWorlds\j4ELYtZvAAA=`
+	// testPath = "/Users/jackkilrain/Desktop/pob"
 
 	overworldKeyLength = 20
 	otherDimKeyLength  = 28
@@ -78,5 +79,5 @@ func main() {
 		panic(err)
 	}
 	writeToFile("chunkdata.bin", data)
-	println(createHexdumpText(data))
+	writeToFile("chunkdata.hex", []byte(hexdump.CreateHexdumpText(data)))
 }

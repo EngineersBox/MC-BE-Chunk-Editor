@@ -1,3 +1,5 @@
+github.com/EngineersBox/hexdump-format v1.0.0 h1:80/ypcmD0lhUG02INNOZ/uNuqj7+2dh0+zL/kh26/D8=
+github.com/EngineersBox/hexdump-format v1.0.0/go.mod h1:uiDw0FA7rdijLvK9dv6MQ0ESgpmzyAANhN1m/NVd9EI=
 github.com/engineersbox/goleveldb v1.3.0 h1:fe7N1K88CVW6U7CXPEjHMPo7nls+SK9I+9qLVhC/3N8=
 github.com/engineersbox/goleveldb v1.3.0/go.mod h1:gcJVPgaBYJy9gKA+FjnTeSw5fCLJpOz7ZpRNgQeuzWQ=
 github.com/fsnotify/fsnotify v1.4.7/go.mod h1:jwhsz4b93w/PPRr/qN1Yymfu8t87LnFCMoQvtojpjFo=

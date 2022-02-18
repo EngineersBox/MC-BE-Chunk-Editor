@@ -4,6 +4,7 @@ import (
 	"encoding/binary"
 	"errors"
 	"fmt"
+	"os"
 	"strconv"
 
 	db "github.com/EngineersBox/MC-BE-Chunk-Editor/src/db"
@@ -42,6 +43,23 @@ func stringKeyToBytes(key string) ([]byte, error) {
 	return keyBytes, nil
 }
 
+func writeToFile(file string, data []byte) error {
+	f, err := os.Create(file)
+	if err != nil {
+		return err
+	}
+	defer f.Close()
+	bytesWritten, err := f.Write(data)
+	if bytesWritten != len(data) {
+		return fmt.Errorf(
+			"did not write all data to file, only wrote %d/%d bytes",
+			bytesWritten,
+			len(data),
+		)
+	}
+	return err
+}
+
 func main() {
 	world, err := db.LoadWorld(testPath)
 	if err != nil {
@@ -59,4 +77,5 @@ func main() {
 		panic(err)
 	}
 	println(fmt.Sprintf("%x", data[4800:]))
+	writeToFile("chunkdata.bin", data)
 }

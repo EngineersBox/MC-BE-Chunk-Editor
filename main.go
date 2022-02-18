@@ -11,7 +11,8 @@ import (
 )
 
 const (
-	testPath = `C:\Users\DEG3NERAT3_\AppData\Local\Packages\Microsoft.MinecraftUWP_8wekyb3d8bbwe\LocalState\games\com.mojang\minecraftWorlds\j4ELYtZvAAA=`
+	// testPath = `C:\Users\DEG3NERAT3_\AppData\Local\Packages\Microsoft.MinecraftUWP_8wekyb3d8bbwe\LocalState\games\com.mojang\minecraftWorlds\j4ELYtZvAAA=`
+	testPath = "/Users/jackkilrain/Desktop/pob"
 
 	overworldKeyLength = 20
 	otherDimKeyLength  = 28
@@ -76,6 +77,6 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	println(fmt.Sprintf("%x", data[4800:]))
 	writeToFile("chunkdata.bin", data)
+	println(createHexdumpText(data))
 }

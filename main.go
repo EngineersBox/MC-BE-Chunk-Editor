@@ -8,6 +8,8 @@ import (
 	"strconv"
 
 	db "github.com/EngineersBox/MC-BE-Chunk-Editor/src/db"
+	hexdump "github.com/EngineersBox/MC-BE-Chunk-Editor/src/hexdump"
+	keys "github.com/EngineersBox/MC-BE-LevelDB-Key-Calculator/lib/keys"
 )
 
 const (
@@ -61,22 +63,39 @@ func writeToFile(file string, data []byte) error {
 	return err
 }
 
+func createKey(x int, y int, z int, worldType string, tagType string, chunkCoords bool) keys.HexKey {
+	var keyParameters keys.LDBKeyParameters = keys.LDBKeyParameters{
+		Coords: keys.Coordinates{
+			X: &x,
+			Y: &y,
+			Z: &z,
+		},
+		Attrs: keys.Attributes{
+			WorldType:   &worldType,
+			TagType:     &tagType,
+			ChunkCoords: &chunkCoords,
+		},
+	}
+	return keyParameters.CalculateHexKey()
+}
+
 func main() {
 	world, err := db.LoadWorld(testPath)
 	if err != nil {
 		panic(err)
 	}
 
-	key, err := stringKeyToBytes("6e000000eaffffff2f02")
+	hexKey := createKey(110, 2, -22, "Overworld", "SubChunkPrefix", true)
+	key, err := stringKeyToBytes(hexKey.ToString())
 	if err != nil {
 		panic(err)
 	}
-	println(fmt.Sprintf("%x", key))
+	println(fmt.Sprintf("LevelDB Key: %x", key))
 
 	data, err := world.Transactor.Get(key)
 	if err != nil {
 		panic(err)
 	}
 	writeToFile("chunkdata.bin", data)
-	println(createHexdumpText(data))
+	writeToFile("chunkdata.hex", []byte(hexdump.CreateHexdumpText(data)))
 }

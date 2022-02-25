@@ -4,11 +4,12 @@ import "fmt"
 
 func charFormatBytes(data []byte) string {
 	buf := ""
-	for b, _ := range data {
+	for _, b := range data {
 		char := "."
 		if b >= 0x20 && b <= 0x7f {
-			buf += fmt.Sprintf("%x", b)
+			char = fmt.Sprintf("%c", b)
 		}
+		buf += char
 	}
 	return buf
 }
@@ -16,34 +17,41 @@ func charFormatBytes(data []byte) string {
 func createByteSeparatedLiteral(data []byte) string {
 	buf := ""
 	for i := 0; i < len(data); i += 2 {
-		buf += fmt.Sprintf(" %x", data[i])
+		buf += fmt.Sprintf(" %02x", data[i])
 		if (i + 1) != len(data) {
-			buf += fmt.Sprintf("%x", data[i+1])
+			buf += fmt.Sprintf("%02x", data[i+1])
 		}
 	}
 	return buf
 }
 
-func createHexdumpText(data []byte) string {
+func CreateHexdumpText(data []byte) string {
 	dwordCount := len(data) / 16
 	residual := len(data) % 16
 	buf := ""
 	for i := 0; i < dwordCount; i++ {
-		address := fmt.Sprintf("000000%x", i*0x10)
 		buf += fmt.Sprintf(
-			"%s: %s\n",
-			address[len(address)-1:],
+			"%s: %s  %s\n",
+			fmt.Sprintf("%08x", i*0x10),
 			createByteSeparatedLiteral(data[i*16:(i+1)*16]),
+			charFormatBytes(data[i*16:(i+1)*16]),
 		)
 	}
-	residualByteString := fmt.Sprintf("000000%x", (dwordCount)*0x10)
-	residualByteString = residualByteString[len(residualByteString)-1:]
+	residualByteString := fmt.Sprintf("%08x: ", (dwordCount)*0x10)
 	for i := 0; i < residual/2; i += 2 {
 		if (i+1)*16 == len(data) {
-			residualByteString += fmt.Sprintf(" %x", data[(i*16)-1])
+			residualByteString += fmt.Sprintf(
+				"%-39s%s",
+				fmt.Sprintf("%02x", data[(i*16)-1]),
+				charFormatBytes(data[(i*16)-1:]),
+			)
 			break
 		}
-		residualByteString += fmt.Sprintf(" %x%x", data[(i*16)+dwordCount-1], data[((i+1)+16)-1])
+		residualByteString += fmt.Sprintf(
+			" %-39s  %s",
+			fmt.Sprintf("%02x%02x", data[(i*16)+dwordCount-1], data[((i+1)+16)-1]),
+			charFormatBytes(data[dwordCount*16:]),
+		)
 	}
 	return buf + residualByteString
 }

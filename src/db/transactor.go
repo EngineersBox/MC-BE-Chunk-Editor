@@ -8,9 +8,12 @@ type Transactor struct {
 
 func (transactor *Transactor) Get(key []byte) ([]byte, error) {
 	raw, err := transactor.conn.Get(key, nil)
+	if err != nil {
+		return nil, err
+	}
 	value := make([]byte, len(raw))
 	copy(value, raw)
-	return value, err
+	return value, nil
 }
 
 func (transactor *Transactor) Store(key []byte, data []byte) error {

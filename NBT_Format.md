@@ -133,8 +133,7 @@ n bytes | * | values (list payload) | [<list payload>]
 #### Compound (format `0A`)
 ```
 1 bytes | N | format        | 0A
-1 bytes | N | length        | 00
-1 bytes | B | separator     | 00
+2 bytes | B | separator     | 00 00
 n bytes | * | tags          | <tags>
 1 bytes | B | separator/end | 00
 ```

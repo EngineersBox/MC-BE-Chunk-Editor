@@ -13,8 +13,8 @@ import (
 )
 
 const (
-	// testPath = `C:\Users\DEG3NERAT3_\AppData\Local\Packages\Microsoft.MinecraftUWP_8wekyb3d8bbwe\LocalState\games\com.mojang\minecraftWorlds\j4ELYtZvAAA=`
-	testPath = "/Users/jackkilrain/Desktop/pob"
+	testPath = `C:\Users\DEG3NERAT3_\AppData\Local\Packages\Microsoft.MinecraftUWP_8wekyb3d8bbwe\LocalState\games\com.mojang\minecraftWorlds\j4ELYtZvAAA=`
+	// testPath = "/Users/jackkilrain/Desktop/pob"
 
 	overworldKeyLength = 20
 	otherDimKeyLength  = 28

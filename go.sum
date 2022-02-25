@@ -1,6 +1,8 @@
 github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03qcyfWMU=
 github.com/EngineersBox/MC-BE-LevelDB-Key-Calculator v0.0.0-20220216055626-60fd0aad3bac h1:wdK+qSGffqSxEu/cq/eLiSQQItzX4THXbDNVKnAhuSQ=
 github.com/EngineersBox/MC-BE-LevelDB-Key-Calculator v0.0.0-20220216055626-60fd0aad3bac/go.mod h1:NoIYTZCSYyEMO0GD5TEZ0XTKrrEFytMq95qLe5Ybo+s=
+github.com/EngineersBox/hexdump-format v1.1.0 h1:o0hnZp9Pk3PPpOVayedAIOyINENTLCTdWleZ+KWQPSI=
+github.com/EngineersBox/hexdump-format v1.1.0/go.mod h1:uiDw0FA7rdijLvK9dv6MQ0ESgpmzyAANhN1m/NVd9EI=
 github.com/cpuguy83/go-md2man/v2 v2.0.0-20190314233015-f79a8a8ca69d/go.mod h1:maD7wRr/U5Z6m/iR4s+kqSMx2CaBsrgA7czyZG/E6dU=
 github.com/engineersbox/goleveldb v1.3.0 h1:fe7N1K88CVW6U7CXPEjHMPo7nls+SK9I+9qLVhC/3N8=
 github.com/engineersbox/goleveldb v1.3.0/go.mod h1:gcJVPgaBYJy9gKA+FjnTeSw5fCLJpOz7ZpRNgQeuzWQ=
